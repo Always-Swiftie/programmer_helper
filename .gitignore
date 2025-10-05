@@ -1,0 +1,233 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+
+# PEP 582
+__pypackages__/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+# JetBrains IDEs
+.idea/
+*.swp
+*.swo
+
+# Conda
+.conda/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+*.swo
+*~
+
+# Project specific
+# 数据文件
+data/
+datasets/
+*.csv
+*.json
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.parquet
+
+# 模型文件
+models/
+checkpoints/
+*.model
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# 向量数据库
+vector_db/
+chroma_db/
+faiss_index/
+*.index
+
+# 配置文件中的敏感信息
+config.ini
+secrets.yaml
+*.key
+*.pem
+*.crt
+
+# 实验和调试文件
+experiments/
+debug/
+tmp/
+temp/
+
+# 文档生成
+docs/_build/
+docs/build/
+
+# 测试相关
+test_data/
+test_results/
+pytest_reports/
+
+# 备份文件
+requirements_backup*.txt
+*_backup.*
+backup_*
+
+# RAG相关临时文件
+embeddings_cache/
+retrieval_cache/
+index_cache/
+
+# 大文件
+*.zip
+*.tar.gz
+*.7z
+*.rar
+
+# 数据库文件
+*.db
+*.sqlite
+*.sqlite3
+
+# 缓存目录
+cache/
+.cache/
