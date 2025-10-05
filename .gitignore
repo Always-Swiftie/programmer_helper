@@ -216,6 +216,22 @@ backup_*
 embeddings_cache/
 retrieval_cache/
 index_cache/
+vector_index/
+test_vector_index/
+
+# Hugging Face缓存
+.cache/huggingface/
+transformers_cache/
+
+# LangChain相关
+.langchain/
+langchain_cache/
+
+# 测试生成的文件
+test_metadata.json
+*_test_*.json
+test_documents/
+test_output/
 
 # 大文件
 *.zip
@@ -231,3 +247,5 @@ index_cache/
 # 缓存目录
 cache/
 .cache/
+
+# 修复最后一行的问题，移除单独的.json行

@@ -20,10 +20,10 @@ class DataPreparationModule:
     CATEGORY_MAPPING = {
         'basis':'Java基础',
         'collection':'Java集合框架',
-        'concurrent':'Java并发编程',
+        'concurrency':'Java并发编程',
         'io':'Java IO',
         'jvm':'JVM',
-        'new-features':'Java新特性',
+        'new-feature':'Java新特性',
         # TODO: 后续继续补充更多分类
     }
     CATEGORY_LABELS = list(set(CATEGORY_MAPPING.values()))
@@ -171,15 +171,15 @@ class DataPreparationModule:
                 has_headers = any(line.strip().startswith('#') for line in content_preview.split('\n'))
 
                 if not has_headers:
-                    logger.warning(f"文档 {doc.metadata.get('title', '未知')} 内容中没有发现Markdown标题")
+                    logger.warning(f"文档 {doc.metadata.get('dish_name', '未知')} 内容中没有发现Markdown标题")
                     logger.debug(f"内容预览: {content_preview}")
                 
                 md_chunks = markdown_splitter.split_text(doc.page_content)
 
-                logger.debug(f'文档{doc.metadata.get("title","未知")} 分割为{len(md_chunks)}个chunk')
+                logger.debug(f'文档{doc.metadata.get('title','未知')} 分割为{len(md_chunks)}个chunk')
 
                 if len(md_chunks) <= 1:
-                    logger.warning(f'文档{doc.metadata.get("title","未知")}未能正常分块')
+                    logger.warning(f'文档{doc.metadata.get('title','未知')}未能正常分块')
 
                 # 为每个子chunks建立与父文档的映射关系(通过metadata)
                 parent_id = doc.metadata['parent_id']
@@ -201,6 +201,13 @@ class DataPreparationModule:
             except Exception as e:
                 logger.warning(f"文档 {doc.metadata.get('source', '未知')} Markdown分割失败: {e}")
                 # 如果Markdown分割失败，将整个文档作为一个chunk
+                child_id = str(uuid.uuid4())
+                doc.metadata.update({
+                    "chunk_id": child_id,
+                    "doc_type": "child",
+                    "chunk_index": 0
+                })
+                self.parent_child_map[child_id] = doc.metadata['parent_id']
                 all_chunks.append(doc)
         
         logger.info(f"Markdown结构分割完成，生成 {len(all_chunks)} 个结构化块")
@@ -255,7 +262,7 @@ class DataPreparationModule:
         for doc in self.documents:
             metadata_list.append({
                 'source': doc.metadata.get('source'),
-                'title': doc.metadata.get('title'),
+                'title': doc.metadata.get('tile'),
                 'category': doc.metadata.get('category'),
                 'content_length': len(doc.page_content)
             })
@@ -307,10 +314,10 @@ class DataPreparationModule:
         # 收集父文档名称和相关性信息用于日志
         parent_info = []
         for doc in parent_docs:
-            title = doc.metadata.get('title', '未知文档')
+            dish_name = doc.metadata.get('dish_name', '未知菜品')
             parent_id = doc.metadata.get('parent_id')
             relevance_count = parent_relevance.get(parent_id, 0)
-            parent_info.append(f"{title}({relevance_count}块)")
+            parent_info.append(f"{dish_name}({relevance_count}块)")
 
         logger.info(f"从 {len(child_chunks)} 个子块中找到 {len(parent_docs)} 个去重父文档: {', '.join(parent_info)}")
         return parent_docs
