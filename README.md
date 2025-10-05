@@ -195,8 +195,9 @@ print(answer)
 MIT License
 
 ## 📧 联系方式
+anthonyLee06@foxmail.com
+24281009@bjtu.edu.cn
 
-如有问题，请提交Issue或发送邮件。
 
 ---
 
