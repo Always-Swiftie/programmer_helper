@@ -114,11 +114,7 @@ class ProgrammerHelperRAGSystem:
 
     def _load_documents_and_build_index(self, force_rebuild: bool = False):
         """加载文档并构建索引"""
-        # 尝试加载现有索引
-        if not force_rebuild and self.index_module.load_index():
-            print("✅ 成功加载现有向量索引")
-            return
-        
+        # 无论是否有现有索引，都需要加载文档数据到内存
         print("📄 开始加载技术文档...")
         
         # 加载文档
@@ -130,13 +126,17 @@ class ProgrammerHelperRAGSystem:
         self.chunks = self.data_module.chunk_documents()
         print(f"📦 成功分割为 {len(self.chunks)} 个文档块")
         
-        # 构建向量索引
-        print("🔗 开始构建向量索引...")
-        self.index_module.build_vector_index(self.chunks)
-        
-        # 保存索引
-        print("💾 保存向量索引...")
-        self.index_module.save_index()
+        # 尝试加载现有索引
+        if not force_rebuild and self.index_module.load_index():
+            print("✅ 成功加载现有向量索引")
+        else:
+            # 构建向量索引
+            print("🔗 开始构建向量索引...")
+            self.index_module.build_vector_index(self.chunks)
+            
+            # 保存索引
+            print("💾 保存向量索引...")
+            self.index_module.save_index()
         
         # 初始化检索优化模块
         print("⚡ 初始化检索优化模块...")

@@ -162,7 +162,7 @@ class GenerationIntegrationModule:
 你是一位专业的Java后端工程师。请根据以下技术文档信息回答用户的问题。
 
 用户问题: {question}
-
+                                                  
 相关技术文档信息:
 {context}
 

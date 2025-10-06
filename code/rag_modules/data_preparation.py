@@ -20,10 +20,10 @@ class DataPreparationModule:
     CATEGORY_MAPPING = {
         'basis':'Java基础',
         'collection':'Java集合框架',
-        'concurrency':'Java并发编程',
+        'concurrent':'Java并发编程',
         'io':'Java IO',
         'jvm':'JVM',
-        'new-feature':'Java新特性',
+        'new-features':'Java新特性',
         # TODO: 后续继续补充更多分类
     }
     CATEGORY_LABELS = list(set(CATEGORY_MAPPING.values()))
@@ -176,10 +176,10 @@ class DataPreparationModule:
                 
                 md_chunks = markdown_splitter.split_text(doc.page_content)
 
-                logger.debug(f'文档{doc.metadata.get('title','未知')} 分割为{len(md_chunks)}个chunk')
+                logger.debug(f'文档{doc.metadata.get("title", "未知")} 分割为{len(md_chunks)}个chunk')
 
                 if len(md_chunks) <= 1:
-                    logger.warning(f'文档{doc.metadata.get('title','未知')}未能正常分块')
+                    logger.warning(f'文档{doc.metadata.get("title", "未知")}未能正常分块')
 
                 # 为每个子chunks建立与父文档的映射关系(通过metadata)
                 parent_id = doc.metadata['parent_id']
