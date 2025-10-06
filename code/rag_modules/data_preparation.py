@@ -18,13 +18,24 @@ class DataPreparationModule:
     """数据准备模块 - 负责数据加载、清洗和预处理"""
     # 统一维护的分类与难度配置，供外部复用，避免关键词重复定义
     CATEGORY_MAPPING = {
+        # /java
         'basis':'Java基础',
         'collection':'Java集合框架',
         'concurrent':'Java并发编程',
         'io':'Java IO',
         'jvm':'JVM',
         'new-features':'Java新特性',
-        # TODO: 后续继续补充更多分类
+        # /tools
+        'docker':'docker',
+        'git':'git',
+        'gradle':'gradle',
+        'maven':'maven',
+        # /databases
+        'sql':'SQL',
+        'redis':'Redis',
+        'mysql':'MySQL',
+        'mongodb':'mongodb',
+        'elasticsearch':'elasticsearch'
     }
     CATEGORY_LABELS = list(set(CATEGORY_MAPPING.values()))
 

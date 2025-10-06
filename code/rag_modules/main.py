@@ -329,6 +329,7 @@ def create_interactive_cli():
         print("  help     - 显示帮助信息")
         print("  stats    - 显示系统统计信息")
         print("  category - 按分类搜索 (格式: category <分类名> <问题>)")
+        print("  stream   - 启用流式输出(格式: stream <问题>)")
         print("  quit/exit - 退出系统")
         print("  直接输入问题进行查询")
         print()
@@ -375,6 +376,22 @@ def create_interactive_cli():
                         print(f"\n💡 回答:\n{answer}")
                     else:
                         print("❌ 格式错误，请使用: category <分类名> <问题>")
+                elif user_input.lower().startswith('stream '):
+                    # 流式回答
+                    question = user_input[7:]  # 去掉 'stream '
+                    if question:
+                        print(f"\n🤔 正在流式生成回答: {question}")
+                        print("💡 回答:")
+                        
+                        # 流式输出
+                        try:
+                            for chunk in system.query_stream(question):
+                                print(chunk, end='', flush=True)
+                            print()  # 换行
+                        except Exception as e:
+                            print(f"\n❌ 流式输出出错: {e}")
+                    else:
+                        print("❌ 请提供问题，格式: stream <问题>")
                         
                 else:
                     # 普通查询
