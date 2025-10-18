@@ -30,12 +30,43 @@ class DataPreparationModule:
         'git':'git',
         'gradle':'gradle',
         'maven':'maven',
-        # /databases
+        # /database
         'sql':'SQL',
         'redis':'Redis',
         'mysql':'MySQL',
         'mongodb':'mongodb',
-        'elasticsearch':'elasticsearch'
+        'elasticsearch':'elasticsearch',
+        # /cs-basics
+        'algorithms':'算法',
+        'data-structure':'数据结构',
+        'network':'计算机网络',
+        'operating-system':'操作系统',
+        # /zhuanlan
+        'zhuanlan':'专栏',
+        # /system-design
+        'system-design':'系统设计',
+        'basis':'系统设计基础',
+        'framework':'系统设计框架',
+        'security':'系统设计安全',
+        # /open-source-project
+        'open-source-project':'开源项目',
+        # /interview-preparation
+        'interview-preparation':'面试准备',
+        # /high-quality-technical-articles
+        'high-quality-technical-articles':'高质量技术文章',
+        'advanced-programmer':'高级程序员',
+        'interview':'面经',
+        'personal-experience':'个人经验',
+        # /high-performance
+        'high-performance':'高性能',
+        'message-queue':'消息队列',
+        # /high-availability
+        'high-availability':'高可用',
+        # /distributed-system
+        'distributed-system':'分布式系统',
+        # /unisound
+        'unisound':'云知声'
+
     }
     CATEGORY_LABELS = list(set(CATEGORY_MAPPING.values()))
 
